@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daeja Sutherland | Portfolio</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #000;
+            position: relative;
+        }
+        
+        nav a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        
+        .hero span {
+            font-style: italic;
+        }
+        
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .featured-work {
+            grid-column: span 2;
+            /* background-color: #f5f5f5; */
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .grid-item {
+            /* background-color: #f5f5f5; */
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .work-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+        
+        .work-title {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            text-align: left;
+            padding-left: 5px;
+        }
+        
+        /* Comics Page Specific */
+        .comics-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+        }
+        
+        .comic-series {
+            background-color: #f5f5f5;
+            padding: 20px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .comic-preview {
+            height: 100%;
+            display: flex;
+            transition: all 0.5s ease;
+        }
+        
+        .comic-page {
+            min-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.5s ease;
+        }
+        
+        .expanded .comic-preview {
+            overflow-x: auto;
+        }
+        
+        /* About Page */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            background-color: #f5f5f5;
+            height: 400px;
+        }
+        
+        .about-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            padding: 10px 0;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Page Visibility */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        #home-page {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Daeja Sutherland</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" data-page="home-page">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link" data-page="comics-page">Comics</a>
+                    <div class="dropdown-content">
+                        <a href="#">Series 1</a>
+                        <a href="#">Series 2</a>
+                        <a href="#">Short Stories</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link" data-page="illustrations-page">Illustrations</a>
+                    <div class="dropdown-content">
+                        <a href="#">Digital</a>
+                        <a href="#">Traditional</a>
+                        <a href="#">Concept Art</a>
+                    </div>
+                </li>
+                <li><a href="#" class="nav-link" data-page="about-page">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <section class="hero">
+            <h1>Daeja Sutherland is an <span>illustrator</span>, <span>comic artist</span>, and <span>writer</span>.</h1>
+        </section>
+        
+        <div class="grid-container">
+            <div class="featured-work">
+                <img src="assets/Homepage Illustrations/9NightsApart.png" alt="Featured artwork" class="work-image">
+                <!-- <div class="work-title">9 Nights Apart.</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/Lets make a pact.png" alt="Artwork 1" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/Sisterhood.png" alt="Artwork 2" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/The Meeting.png" alt="Artwork 3" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/My Mother.png" alt="Artwork 4" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/Monster Kids.png" alt="Artwork 5" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+
+            <div class="grid-item">
+                <img src="assets/Homepage Illustrations/Fairy Fight.png" alt="Artwork 6" class="work-image">
+                <!-- <div class="work-title">Artwork Title</div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Comics Page -->
+    <div id="comics-page" class="page">
+        <section class="hero">
+            <h1>Comics & Sequential Work</h1>
+        </section>
+        
+        <div class="comics-container">
+            <div class="comic-series" onclick="toggleExpand(this)">
+                <div class="comic-preview">
+                    <img src="assets/Comics/Graphite Comics no color/Mothers Day Page 1.png" alt="Comic Page 1" class="comic-page">
+                    <img src="assets/Comics/Graphite Comics no color/Mothers Day Page 2.png">
+                    <img src="/api/placeholder/300/350" alt="Comic Page 3" class="comic-page">
+                    <img src="/api/placeholder/300/350" alt="Comic Page 4" class="comic-page">
+                </div>
+                <!-- <div class="work-title">Series Title — Hover or click to expand</div> -->
+            </div>
+            
+            <div class="comic-series" onclick="toggleExpand(this)">
+                <div class="comic-preview">
+                    <img src="assets/Comics/Graphite Comics no color/Computer comic Page 1.png" alt="Comic Page 1" class="comic-page">
+                    <img src="assets/Comics/Graphite Comics no color/Computer comic page 2.png" alt="Comic Page 2" class="comic-page">
+                    <img src="/api/placeholder/300/350" alt="Comic Page 3" class="comic-page">
+                </div>
+                <!-- <div class="work-title">Work in Progress — Coming Soon</div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Illustrations Page -->
+    <div id="illustrations-page" class="page">
+        <section class="hero">
+            <h1>Illustrations</h1>
+        </section>
+        
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Anatomy Study.jpg" alt="Illustration 1" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Bethesda Fountain.jpg" alt="Illustration 2" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Cowboys.png" alt="Illustration 3" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Life Study.png" alt="Illustration 4" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Portrait.png" alt="Illustration 5" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Pose.png" alt="Illustration 6" class="work-image">
+            </div>
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Sanka Character Work.png" alt="Illustration 7" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Sis at work.png" alt="Illustration 8" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Skaterboy.jpg" alt="Illustration 9" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+            <div class="grid-item">
+                <img src="assets/Sketchbook/Two handed study.png" alt="Illustration 10" class="work-image">
+                <!-- <div class="work-title">Illustration Title</div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+        <section class="hero">
+            <h1>About Daeja Sutherland</h1>
+        </section>
+        
+        <div class="about-content">
+            <!-- <div class="about-image"> -->
+                <!-- <img src="/api/placeholder/400/400" alt="Daeja Sutherland" style="width: 100%; height: 100%; object-fit: cover;"> -->
+            <!-- </div> -->
+            <div class="about-text">
+                <p>Hello! My name is Daeja Sutherland and I'm an illustrator, comic artist, and writer. I love exploring cultural, political, and social questions through fantasy illustration, and have a particular obsession with orcs.</p>
+                <br>
+                <p>I mainly work with traditional media, specifically with graphite and pen. I color digitally or with watercolor and pencil crayon. After finishing my thesis comic, a story about two orc sisters, titled “The Back of the Orchard” I’m currently working on a graphic novel about a mother and son dealing with the aftermath of a failed experiment.</p>
+                <br>
+                <p>For commissions or inquiries, please contact: <br>
+                    daejasutherland@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+            });
+        });
+        
+        // Comic expansion functionality
+        function toggleExpand(element) {
+            element.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
